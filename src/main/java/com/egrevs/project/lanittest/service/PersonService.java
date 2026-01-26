@@ -40,7 +40,7 @@ public class PersonService {
         if (isAdult(person)) {
             personRepository.save(person);
         } else
-            throw new PersonIsNotAdultException("Пользователю меньше 18 лет");
+            throw new PersonIsNotAdultException("Дата рождения не подходит, пользователь должен быть старше 18 лет");
     }
 
     public PersonWithCarsResponse getPeopleWithCars(Long personId) {
