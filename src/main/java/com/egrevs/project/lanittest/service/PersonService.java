@@ -51,6 +51,10 @@ public class PersonService {
         return toDto(person);
     }
 
+    public void clearAll(){
+        personRepository.deleteAll();
+    }
+
     private boolean isAdult(Person person) {
         return Period.between(
                         person.getBirthday()
