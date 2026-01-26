@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+// TODO сделать валидацию на model (vendor + model)
 @Entity
 @Table(name = "cars")
 @Getter
