@@ -21,11 +21,11 @@ public class PersonService {
         this.personRepository = personRepository;
     }
 
-    public void createPerson(CreatePersonRequest personRequest){
-        Person person = personRepository.findById(personRequest.id()).orElseThrow(
-                () -> new PersonAlreadyExistsException("Человек с таким id уже существует")
-        );
+    public void createPerson(CreatePersonRequest personRequest) {
+        if (personRepository.existsById(personRequest.id()))
+            throw new PersonAlreadyExistsException("Человек с таким id уже существует");
 
+        Person person = new Person();
         person.setId(personRequest.id());
         person.setName(personRequest.name());
         person.setBirthday(personRequest.birthday());
@@ -33,7 +33,7 @@ public class PersonService {
         personRepository.save(person);
     }
 
-    public PersonWithCarsResponse getPeopleWithCars(Long personId){
+    public PersonWithCarsResponse getPeopleWithCars(Long personId) {
         Person person = personRepository.findById(personId).orElseThrow(
                 () -> new PersonNotFoundException("Пользователь с таким id не существует")
         );
@@ -41,7 +41,7 @@ public class PersonService {
         return toDto(person);
     }
 
-    private PersonWithCarsResponse toDto(Person person){
+    private PersonWithCarsResponse toDto(Person person) {
         return new PersonWithCarsResponse(
                 person.getId(),
                 person.getName(),
@@ -50,7 +50,7 @@ public class PersonService {
         );
     }
 
-    private CarResponse toDto(Car car){
+    private CarResponse toDto(Car car) {
         return new CarResponse(
                 car.getId(),
                 car.getModel(),

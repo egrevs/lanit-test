@@ -17,13 +17,14 @@ public class CarService {
     private PersonRepository personRepository;
 
     @Autowired
-    public CarService(CarRepository carRepository) {
+    public CarService(CarRepository carRepository, PersonRepository personRepository) {
         this.carRepository = carRepository;
+        this.personRepository = personRepository;
     }
 
     public void createCar(CreateCarRequest carRequest) {
         if (carRepository.existsById(carRequest.id()))
-            new CarAlreadyExistsException("Машина с таким ID уже существует");
+            throw new CarAlreadyExistsException("Машина с таким ID уже существует");
 
         Person person = personRepository.findById(carRequest.ownerId()).orElseThrow(
                 () -> new PersonNotFoundException("Пользователя с таким ownerID не существует")

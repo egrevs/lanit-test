@@ -15,6 +15,6 @@ public record PersonWithCarsResponse(
         @JsonFormat(pattern = "dd.MM.yyyy")
         Date birthday,
         @NotNull
-        List<CarResponse> carList
+        List<CarResponse> cars
 ) {
 }

@@ -23,7 +23,7 @@ public class PersonController {
     }
 
     @GetMapping
-    public ResponseEntity<PersonWithCarsResponse> getPeopleWithCars(@RequestParam Long personId){
+    public ResponseEntity<PersonWithCarsResponse> getPeopleWithCars(@RequestParam(name = "personId") Long personId){
         return ResponseEntity.ok(personService.getPeopleWithCars(personId));
     }
 }
