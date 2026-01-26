@@ -6,10 +6,17 @@ import com.egrevs.project.lanittest.dto.PersonWithCarsResponse;
 import com.egrevs.project.lanittest.entity.Car;
 import com.egrevs.project.lanittest.entity.Person;
 import com.egrevs.project.lanittest.exception.PersonAlreadyExistsException;
+import com.egrevs.project.lanittest.exception.PersonIsNotAdultException;
 import com.egrevs.project.lanittest.exception.PersonNotFoundException;
 import com.egrevs.project.lanittest.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Period;
+import java.time.ZoneId;
+import java.util.Date;
 
 @Service
 public class PersonService {
@@ -30,7 +37,10 @@ public class PersonService {
         person.setName(personRequest.name());
         person.setBirthday(personRequest.birthday());
 
-        personRepository.save(person);
+        if (isAdult(person)) {
+            personRepository.save(person);
+        } else
+            throw new PersonIsNotAdultException("Пользователю меньше 18 лет");
     }
 
     public PersonWithCarsResponse getPeopleWithCars(Long personId) {
@@ -39,6 +49,16 @@ public class PersonService {
         );
 
         return toDto(person);
+    }
+
+    private boolean isAdult(Person person) {
+        return Period.between(
+                        person.getBirthday()
+                                .toInstant()
+                                .atZone(ZoneId.systemDefault())
+                                .toLocalDate(),
+                        LocalDate.now())
+                .getYears() > 18;
     }
 
     private PersonWithCarsResponse toDto(Person person) {
