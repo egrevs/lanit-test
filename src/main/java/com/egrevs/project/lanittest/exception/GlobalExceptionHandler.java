@@ -32,6 +32,11 @@ public class GlobalExceptionHandler {
         return buildErrorResponse(HttpStatus.NOT_FOUND, e.getMessage());
     }
 
+    @ExceptionHandler(InvalidFieldException.class)
+    public ResponseEntity<Map<String, Object>> handleReviewByVendorFields(InvalidFieldException e){
+        return buildErrorResponse(HttpStatus.BAD_REQUEST, e.getMessage());
+    }
+
     private ResponseEntity<Map<String, Object>> buildErrorResponse(HttpStatus status, String message) {
         Map<String, Object> errorResponse = new HashMap<>();
         errorResponse.put("timestamp", LocalDateTime.now());

@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-// TODO сделать валидацию на model (vendor + model)
 @Entity
 @Table(name = "cars")
 @Getter
@@ -15,6 +14,9 @@ public class Car {
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+
+    @Column(name = "vendor")
+    private String vendor;
 
     @Column(name = "model")
     private String model;
