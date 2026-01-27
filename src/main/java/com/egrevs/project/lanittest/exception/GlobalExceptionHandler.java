@@ -2,6 +2,7 @@ package com.egrevs.project.lanittest.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -35,6 +36,11 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(InvalidFieldException.class)
     public ResponseEntity<Map<String, Object>> handleReviewByVendorFields(InvalidFieldException e){
         return buildErrorResponse(HttpStatus.BAD_REQUEST, e.getMessage());
+    }
+
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<Map<String, Object>> handleReviewByJsonFormat(HttpMessageNotReadableException e){
+        return buildErrorResponse(HttpStatus.BAD_REQUEST, "Неверный формат даты. Ожидается формат: dd.MM.yyyy");
     }
 
     private ResponseEntity<Map<String, Object>> buildErrorResponse(HttpStatus status, String message) {
