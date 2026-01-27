@@ -41,7 +41,7 @@ public class PersonService {
         return toDto(person);
     }
 
-    public void clearAll(){
+    public void clearAll() {
         personRepository.deleteAll();
     }
 

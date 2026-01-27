@@ -8,7 +8,6 @@ import com.egrevs.project.lanittest.exception.PersonIsNotAdultException;
 import com.egrevs.project.lanittest.exception.PersonNotFoundException;
 import com.egrevs.project.lanittest.repository.CarRepository;
 import com.egrevs.project.lanittest.repository.PersonRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -18,10 +17,9 @@ import java.time.ZoneId;
 @Component
 public class CarsValidator {
 
-    private CarRepository carRepository;
-    private PersonRepository personRepository;
+    private final CarRepository carRepository;
+    private final PersonRepository personRepository;
 
-    @Autowired
     public CarsValidator(CarRepository carRepository, PersonRepository personRepository) {
         this.carRepository = carRepository;
         this.personRepository = personRepository;

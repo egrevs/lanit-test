@@ -7,17 +7,15 @@ import com.egrevs.project.lanittest.exception.PersonNotFoundException;
 import com.egrevs.project.lanittest.repository.CarRepository;
 import com.egrevs.project.lanittest.repository.PersonRepository;
 import com.egrevs.project.lanittest.service.validator.CarsValidator;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CarService {
 
-    private CarRepository carRepository;
-    private PersonRepository personRepository;
-    private CarsValidator carsValidator;
+    private final CarRepository carRepository;
+    private final PersonRepository personRepository;
+    private final CarsValidator carsValidator;
 
-    @Autowired
     public CarService(CarRepository carRepository, PersonRepository personRepository, CarsValidator carsValidator) {
         this.carRepository = carRepository;
         this.personRepository = personRepository;
