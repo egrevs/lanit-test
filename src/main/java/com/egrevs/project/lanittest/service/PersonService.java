@@ -5,9 +5,11 @@ import com.egrevs.project.lanittest.dto.CreatePersonRequest;
 import com.egrevs.project.lanittest.dto.PersonWithCarsResponse;
 import com.egrevs.project.lanittest.entity.Car;
 import com.egrevs.project.lanittest.entity.Person;
+import com.egrevs.project.lanittest.exception.InvalidFieldException;
 import com.egrevs.project.lanittest.exception.PersonAlreadyExistsException;
 import com.egrevs.project.lanittest.exception.PersonNotFoundException;
 import com.egrevs.project.lanittest.repository.PersonRepository;
+import com.egrevs.project.lanittest.service.validator.PersonValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,15 +17,19 @@ import org.springframework.stereotype.Service;
 public class PersonService {
 
     private PersonRepository personRepository;
+    private PersonValidator personValidator;
 
     @Autowired
-    public PersonService(PersonRepository personRepository) {
+    public PersonService(PersonRepository personRepository, PersonValidator personValidator) {
         this.personRepository = personRepository;
+        this.personValidator = personValidator;
     }
 
     public void createPerson(CreatePersonRequest personRequest) {
         if (personRepository.existsById(personRequest.id()))
             throw new PersonAlreadyExistsException("Человек с таким id уже существует");
+
+        personValidator.validateBirthdate(personRequest);
 
         Person person = new Person();
         person.setId(personRequest.id());
