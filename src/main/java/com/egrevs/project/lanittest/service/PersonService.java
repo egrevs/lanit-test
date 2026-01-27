@@ -54,7 +54,6 @@ public class PersonService {
         );
     }
 
-    //TODO склеить vendor и model для отображения
     private CarResponse toDto(Car car) {
         return new CarResponse(
                 car.getId(),
