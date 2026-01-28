@@ -1,13 +1,22 @@
 package com.egrevs.project.lanittest.util;
 
+import com.egrevs.project.lanittest.dto.CreateCarRequest;
+import com.egrevs.project.lanittest.dto.CreatePersonRequest;
+import com.egrevs.project.lanittest.dto.StatisticsDto;
 import com.egrevs.project.lanittest.entity.Car;
 import com.egrevs.project.lanittest.entity.Person;
+import lombok.extern.slf4j.Slf4j;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
 
+@Slf4j
 public class DataUtils {
+
+    private static SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyy");
 
     public static Person getDmitriyPerson(){
         Person person = new Person();
@@ -89,5 +98,59 @@ public class DataUtils {
         car.setHorsepower(249);
         car.setOwner(getAdultAndreyPerson());
         return car;
+    }
+
+    public static CreatePersonRequest getPersonRequest() {
+        String dateStr = "01.01.2000";
+        try {
+            Date date = sdf.parse(dateStr);
+            return new CreatePersonRequest(
+                    1L,
+                    "Александр",
+                        date
+                    );
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static CreatePersonRequest getInvalidPersonRequest() {
+        String dateStr = "01.01.2000";
+        try {
+            Date date = sdf.parse(dateStr);
+            return new CreatePersonRequest(
+                    null,
+                    "Александр",
+                    date
+            );
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static CreateCarRequest getCarRequest() {
+        return new CreateCarRequest(
+                1L,
+                "Toyota-Camry",
+                200,
+                1L
+        );
+    }
+
+    public static CreateCarRequest getInvalidCarRequest() {
+        return new CreateCarRequest(
+                null,
+                "Toyota-Camry",
+                200,
+                1L
+        );
+    }
+
+    public static StatisticsDto getStatisticsDto(){
+        return new StatisticsDto(
+                1L,
+                2L,
+                2L
+        );
     }
 }
