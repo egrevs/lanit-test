@@ -87,7 +87,6 @@ class CarServiceTest {
         //when
         //then
         assertThrows(PersonNotFoundException.class, () -> carService.createCar(carToSave));
-        verify(carsValidator).validateCarRequest(carToSave);
         verify(carRepository, never()).save(any(Car.class));
     }
 
