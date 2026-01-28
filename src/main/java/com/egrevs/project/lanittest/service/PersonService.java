@@ -51,6 +51,10 @@ public class PersonService {
         personRepository.deleteAll();
     }
 
+    public long count(){
+        return personRepository.count();
+    }
+
     private PersonWithCarsResponse toDto(Person person) {
         return new PersonWithCarsResponse(
                 person.getId(),

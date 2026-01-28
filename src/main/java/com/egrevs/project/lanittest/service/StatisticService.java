@@ -8,19 +8,19 @@ import org.springframework.stereotype.Service;
 @Service
 public class StatisticService {
 
-    private final PersonRepository personRepository;
-    private final CarRepository carRepository;
+    private final CarService carService;
+    private final PersonService personService;
 
-    public StatisticService(PersonRepository personRepository, CarRepository carRepository) {
-        this.personRepository = personRepository;
-        this.carRepository = carRepository;
+    public StatisticService(CarService carService, PersonService personService) {
+        this.carService = carService;
+        this.personService = personService;
     }
 
     public StatisticsDto getStatistics(){
         return new StatisticsDto(
-                personRepository.count(),
-                carRepository.count(),
-                carRepository.countByVendor()
+                personService.count(),
+                carService.count(),
+                carService.countByVendor()
         );
     }
 }

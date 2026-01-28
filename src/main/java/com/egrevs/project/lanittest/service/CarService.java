@@ -9,6 +9,7 @@ import com.egrevs.project.lanittest.repository.PersonRepository;
 import com.egrevs.project.lanittest.service.validator.CarsValidator;
 import org.springframework.stereotype.Service;
 
+//TODO зачем надо ставить @Transactional и почему сейчас работает и написать на это тест
 @Service
 public class CarService {
 
@@ -39,5 +40,13 @@ public class CarService {
         car.setOwner(person);
 
         carRepository.save(car);
+    }
+
+    public long count(){
+        return carRepository.count();
+    }
+
+    public long countByVendor(){
+        return carRepository.countByVendor();
     }
 }

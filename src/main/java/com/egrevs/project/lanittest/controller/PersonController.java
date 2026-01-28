@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-// Поменять название api
 @RestController
 @RequestMapping("api/people")
 @RequiredArgsConstructor
