@@ -40,7 +40,13 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<Map<String, Object>> handleReviewByJsonFormat(HttpMessageNotReadableException e){
-        return buildErrorResponse(HttpStatus.BAD_REQUEST, "Неверный формат даты. Ожидается формат: dd.MM.yyyy");
+        return buildErrorResponse(HttpStatus.BAD_REQUEST,
+                "Неверный формат даты. Ожидается формат: dd.MM.yyyy");
+    }
+
+    @ExceptionHandler(PersonWithoutCarsException.class)
+    public ResponseEntity<Map<String, Object>> handlePersonWithoutCars(PersonWithoutCarsException e){
+        return buildErrorResponse(HttpStatus.BAD_REQUEST, e.getMessage());
     }
 
     private ResponseEntity<Map<String, Object>> buildErrorResponse(HttpStatus status, String message) {

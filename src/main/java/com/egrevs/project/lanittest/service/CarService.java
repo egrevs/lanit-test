@@ -3,6 +3,7 @@ package com.egrevs.project.lanittest.service;
 import com.egrevs.project.lanittest.dto.CreateCarRequest;
 import com.egrevs.project.lanittest.entity.Car;
 import com.egrevs.project.lanittest.entity.Person;
+import com.egrevs.project.lanittest.exception.InvalidFieldException;
 import com.egrevs.project.lanittest.exception.PersonNotFoundException;
 import com.egrevs.project.lanittest.repository.CarRepository;
 import com.egrevs.project.lanittest.repository.PersonRepository;
@@ -24,11 +25,15 @@ public class CarService {
     }
 
     public void createCar(CreateCarRequest carRequest) {
-        carsValidator.validateCarRequest(carRequest);
-
         Person person = personRepository.findById(carRequest.ownerId()).orElseThrow(
                 () -> new PersonNotFoundException("Пользователя с таким ownerID не существует")
         );
+
+        carsValidator.validateCarRequest(carRequest);
+
+        if (!carRequest.model().contains("-")) {
+            throw new InvalidFieldException("Неверный формат записи model");
+        }
 
         String[] array = carRequest.model().split("-", 2);
 
@@ -42,11 +47,11 @@ public class CarService {
         carRepository.save(car);
     }
 
-    public long count(){
+    public long count() {
         return carRepository.count();
     }
 
-    public long countByVendor(){
+    public long countByVendor() {
         return carRepository.countByVendor();
     }
 }

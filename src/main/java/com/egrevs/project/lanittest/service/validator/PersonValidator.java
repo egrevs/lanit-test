@@ -1,7 +1,9 @@
 package com.egrevs.project.lanittest.service.validator;
 
 import com.egrevs.project.lanittest.dto.CreatePersonRequest;
+import com.egrevs.project.lanittest.entity.Person;
 import com.egrevs.project.lanittest.exception.InvalidFieldException;
+import com.egrevs.project.lanittest.exception.PersonWithoutCarsException;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -15,5 +17,10 @@ public class PersonValidator {
 
         if (localDate.isAfter(LocalDate.now()))
             throw new InvalidFieldException("Невалидная дата рождения");
+    }
+
+    public void validatePersonWithCars(Person person){
+        if (person.getCars().isEmpty())
+            throw new PersonWithoutCarsException("У пользователя нет машин во владении");
     }
 }
