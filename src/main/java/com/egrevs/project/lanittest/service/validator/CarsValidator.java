@@ -2,7 +2,6 @@ package com.egrevs.project.lanittest.service.validator;
 
 import com.egrevs.project.lanittest.dto.CreateCarRequest;
 import com.egrevs.project.lanittest.entity.Person;
-import com.egrevs.project.lanittest.exception.CarAlreadyExistsException;
 import com.egrevs.project.lanittest.exception.InvalidFieldException;
 import com.egrevs.project.lanittest.exception.PersonIsNotAdultException;
 import com.egrevs.project.lanittest.exception.PersonNotFoundException;
@@ -17,23 +16,15 @@ import java.time.ZoneId;
 @Component
 public class CarsValidator {
 
-    private final CarRepository carRepository;
     private final PersonRepository personRepository;
 
     public CarsValidator(CarRepository carRepository, PersonRepository personRepository) {
-        this.carRepository = carRepository;
         this.personRepository = personRepository;
     }
 
     public void validateCarRequest(CreateCarRequest request){
-        validateId(request.id());
         validateOwner(request.ownerId());
         validateModel(request.model());
-    }
-
-    private void validateId(Long id){
-        if (carRepository.existsById(id))
-            throw new CarAlreadyExistsException("Машина с таким ID уже существует");
     }
 
     private void validateOwner(Long ownerId){
