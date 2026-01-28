@@ -109,7 +109,6 @@ class CarServiceTest {
         verify(carRepository, never()).save(any(Car.class));
     }
 
-    //TODO логика для split() в сервисе
     @Test
     @DisplayName("Test car with incorrect format of model functionality")
     public void givenCarToSaveWithIncorrectModelFormat_whenSaveCar_thenExceptionIsThrown(){
