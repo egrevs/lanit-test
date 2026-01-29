@@ -18,7 +18,7 @@ public class StatisticsController {
     }
 
     @GetMapping
-    public ResponseEntity<StatisticsDto> getStat(){
+    public ResponseEntity<StatisticsDto> getStat() {
         return ResponseEntity.ok(statisticService.getStatistics());
     }
 }

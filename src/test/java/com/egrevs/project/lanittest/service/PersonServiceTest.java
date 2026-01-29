@@ -39,7 +39,7 @@ class PersonServiceTest {
 
     @Test
     @DisplayName("Test save person functionality")
-    public void givenPersonToSaveRequest_whenSavePerson_thenRepositoryIsCalled(){
+    public void givenPersonToSaveRequest_whenSavePerson_thenRepositoryIsCalled() {
         //given
         Person person = DataUtils.getDmitriyPerson();
         CreatePersonRequest personToSave = new CreatePersonRequest(
@@ -67,7 +67,7 @@ class PersonServiceTest {
 
     @Test
     @DisplayName("Test save present person functionality")
-    public void givenPersonToSaveRequest_whenSavePerson_thenExceptionIsThrown(){
+    public void givenPersonToSaveRequest_whenSavePerson_thenExceptionIsThrown() {
         //given
         Person person = DataUtils.getVladimirPerson();
         CreatePersonRequest personToSave = new CreatePersonRequest(
@@ -86,7 +86,7 @@ class PersonServiceTest {
 
     @Test
     @DisplayName("Test getting person with cars functionality")
-    public void givenPersonWithCars_whenGetPersonWithCars_thenRepositoryIsCalled(){
+    public void givenPersonWithCars_whenGetPersonWithCars_thenRepositoryIsCalled() {
         //given
         Person person = DataUtils.getAdultAndreyPerson();
         person.setCars(List.of(DataUtils.getAndreyBmwCar(), DataUtils.getAndreyToyotaCar()));
@@ -110,7 +110,7 @@ class PersonServiceTest {
 
     @Test
     @DisplayName("Test getting unknown person functionality")
-    public void givenPersonWithCars_wheGetPersonWithCars_thenExceptionIsThrown(){
+    public void givenPersonWithCars_wheGetPersonWithCars_thenExceptionIsThrown() {
         //given
         Long nonExistentPersonId = 10000L;
         BDDMockito.given(personRepository.findById(anyLong()))
@@ -123,7 +123,7 @@ class PersonServiceTest {
 
     @Test
     @DisplayName("Test getting person with cars throwing exception functionality")
-    public void givenPersonWithoutCars_whenGetPersonWithCars_thenExceptionIsThrown(){
+    public void givenPersonWithoutCars_whenGetPersonWithCars_thenExceptionIsThrown() {
         //given
         Person person = DataUtils.getAdultAndreyPerson();
         BDDMockito.given(personRepository.findById(person.getId()))
@@ -139,7 +139,7 @@ class PersonServiceTest {
 
     @Test
     @DisplayName("Test validator in save method functionality")
-    public void givenPersonToSaveRequest_whenSavePerson_thenValidatorExceptionIsReturned(){
+    public void givenPersonToSaveRequest_whenSavePerson_thenValidatorExceptionIsReturned() {
         //given
         Person person = DataUtils.getSergeyPerson();
         CreatePersonRequest personRequest = new CreatePersonRequest(

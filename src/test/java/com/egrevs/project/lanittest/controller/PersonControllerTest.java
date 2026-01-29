@@ -42,8 +42,8 @@ class PersonControllerTest {
         BDDMockito.doNothing().when(personService).createPerson(any(CreatePersonRequest.class));
         //when
         mockMvc.perform(post("/api/people")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(personRequest)))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(personRequest)))
                 .andExpect(MockMvcResultMatchers.status().isOk());
         //then
         verify(personService, times(1)).createPerson(any(CreatePersonRequest.class));
@@ -74,7 +74,7 @@ class PersonControllerTest {
                 .willReturn(any(PersonWithCarsResponse.class));
         //when
         mockMvc.perform(get("/api/people")
-                .contentType(MediaType.APPLICATION_JSON)
+                        .contentType(MediaType.APPLICATION_JSON)
                         .param("personId", personId.toString()))
                 .andExpect(MockMvcResultMatchers.status().isOk());
         //then

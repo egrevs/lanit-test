@@ -20,13 +20,13 @@ class PersonRepositoryTest {
     private PersonRepository personRepository;
 
     @BeforeEach
-    public void setUp(){
+    public void setUp() {
         personRepository.deleteAll();
     }
 
     @Test
     @DisplayName("Test save person functionality")
-    public void givenPersonObject_whenSave_thenPersonIsCreated(){
+    public void givenPersonObject_whenSave_thenPersonIsCreated() {
         //given
         Person personToSave = DataUtils.getDmitriyPerson();
         //when
@@ -40,7 +40,7 @@ class PersonRepositoryTest {
 
     @Test
     @DisplayName("Test get person functionality")
-    public void givenPersonCreated_whenGetById_thenPersonIsReturned(){
+    public void givenPersonCreated_whenGetById_thenPersonIsReturned() {
         //given
         Person personToSave = DataUtils.getDmitriyPerson();
         Person savedPerson = personRepository.save(personToSave);
@@ -53,7 +53,7 @@ class PersonRepositoryTest {
 
     @Test
     @DisplayName("Test count people functionality")
-    public void givenThreePersonToSave_whenCount_thenPeopleCountIsReturned(){
+    public void givenThreePersonToSave_whenCount_thenPeopleCountIsReturned() {
         //given
         Person person1 = DataUtils.getDmitriyPerson();
         Person person2 = DataUtils.getSergeyPerson();

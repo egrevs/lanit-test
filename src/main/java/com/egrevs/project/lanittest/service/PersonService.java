@@ -51,7 +51,7 @@ public class PersonService {
         personRepository.deleteAll();
     }
 
-    public long count(){
+    public long count() {
         return personRepository.count();
     }
 

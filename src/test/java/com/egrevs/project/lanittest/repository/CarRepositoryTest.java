@@ -25,13 +25,13 @@ class CarRepositoryTest {
     private PersonRepository personRepository;
 
     @BeforeEach
-    public void setUp(){
+    public void setUp() {
         carRepository.deleteAll();
     }
 
     @Test
     @DisplayName("Test save car functionality")
-    public void givenCarObject_whenSave_thenCarIsCreated(){
+    public void givenCarObject_whenSave_thenCarIsCreated() {
         //given
         Car carToSave = DataUtils.getBmwCar();
         //when
@@ -46,7 +46,7 @@ class CarRepositoryTest {
 
     @Test
     @DisplayName("Test count cars functionality")
-    public void givenThreePersonToSave_whenCount_thenCountIsReturned(){
+    public void givenThreePersonToSave_whenCount_thenCountIsReturned() {
         //given
         Person person = DataUtils.getDmitriyPerson();
         Car car1 = DataUtils.getBmwCar();
@@ -65,7 +65,7 @@ class CarRepositoryTest {
 
     @Test
     @DisplayName("Test unique car's vendors functionality")
-    public void givenThreeNotUniqueByVendorCarsToSave_whenCountByVendor_thenUniqueCountByVendorIsReturned(){
+    public void givenThreeNotUniqueByVendorCarsToSave_whenCountByVendor_thenUniqueCountByVendorIsReturned() {
         //given
         Person person = DataUtils.getDmitriyPerson();
         Car car1 = DataUtils.getBmwCar();
@@ -84,7 +84,7 @@ class CarRepositoryTest {
 
     @Test
     @DisplayName("Test invalid data - no owner functionality")
-    public void givenCarWithoutOwnerToSave_whenSave_thenExceptionIsReturned(){
+    public void givenCarWithoutOwnerToSave_whenSave_thenExceptionIsReturned() {
         //given
         Car car = DataUtils.getToyotaMarkCar();
         //when
@@ -95,7 +95,7 @@ class CarRepositoryTest {
 
     @Test
     @DisplayName("Test transient person in context functionality")
-    public void givenCarAndTransientPerson_whenSaveOnlyCar_thenPersistExceptionIsReturned(){
+    public void givenCarAndTransientPerson_whenSaveOnlyCar_thenPersistExceptionIsReturned() {
         //given
         Person person = DataUtils.getVladimirPerson();
         Car car = DataUtils.getToyotaMarkCar();

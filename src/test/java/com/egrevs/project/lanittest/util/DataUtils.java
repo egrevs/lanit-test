@@ -18,7 +18,7 @@ public class DataUtils {
 
     private static SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyy");
 
-    public static Person getDmitriyPerson(){
+    public static Person getDmitriyPerson() {
         Person person = new Person();
         person.setId(1L);
         person.setName("Дмитрий");
@@ -26,7 +26,7 @@ public class DataUtils {
         return person;
     }
 
-    public static Person getSergeyPerson(){
+    public static Person getSergeyPerson() {
         Person person = new Person();
         person.setId(2L);
         person.setName("Сергей");
@@ -34,7 +34,7 @@ public class DataUtils {
         return person;
     }
 
-    public static Person getVladimirPerson(){
+    public static Person getVladimirPerson() {
         Person person = new Person();
         person.setId(3L);
         person.setName("Владимир");
@@ -42,7 +42,7 @@ public class DataUtils {
         return person;
     }
 
-    public static Person getAdultAndreyPerson(){
+    public static Person getAdultAndreyPerson() {
         Person person = new Person();
         person.setId(1L);
         person.setName("Андрей");
@@ -53,7 +53,7 @@ public class DataUtils {
         return person;
     }
 
-    public static Car getToyotaMarkCar(){
+    public static Car getToyotaMarkCar() {
         Car car = new Car();
         car.setId(1L);
         car.setVendor("Toyota");
@@ -62,7 +62,7 @@ public class DataUtils {
         return car;
     }
 
-    public static Car getToyotaCamryCar(){
+    public static Car getToyotaCamryCar() {
         Car car = new Car();
         car.setId(2L);
         car.setVendor("Toyota");
@@ -71,7 +71,7 @@ public class DataUtils {
         return car;
     }
 
-    public static Car getBmwCar(){
+    public static Car getBmwCar() {
         Car car = new Car();
         car.setId(3L);
         car.setVendor("BMW");
@@ -80,7 +80,7 @@ public class DataUtils {
         return car;
     }
 
-    public static Car getAndreyBmwCar(){
+    public static Car getAndreyBmwCar() {
         Car car = new Car();
         car.setId(1L);
         car.setVendor("BMW");
@@ -90,7 +90,7 @@ public class DataUtils {
         return car;
     }
 
-    public static Car getAndreyToyotaCar(){
+    public static Car getAndreyToyotaCar() {
         Car car = new Car();
         car.setId(2L);
         car.setVendor("Toyota");
@@ -107,8 +107,8 @@ public class DataUtils {
             return new CreatePersonRequest(
                     1L,
                     "Александр",
-                        date
-                    );
+                    date
+            );
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
@@ -146,7 +146,7 @@ public class DataUtils {
         );
     }
 
-    public static StatisticsDto getStatisticsDto(){
+    public static StatisticsDto getStatisticsDto() {
         return new StatisticsDto(
                 1L,
                 2L,

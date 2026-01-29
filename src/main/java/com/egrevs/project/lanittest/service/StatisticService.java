@@ -16,7 +16,7 @@ public class StatisticService {
         this.personService = personService;
     }
 
-    public StatisticsDto getStatistics(){
+    public StatisticsDto getStatistics() {
         return new StatisticsDto(
                 personService.count(),
                 carService.count(),

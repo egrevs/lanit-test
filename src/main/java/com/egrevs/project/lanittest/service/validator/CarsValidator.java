@@ -22,12 +22,12 @@ public class CarsValidator {
         this.personRepository = personRepository;
     }
 
-    public void validateCarRequest(CreateCarRequest request){
+    public void validateCarRequest(CreateCarRequest request) {
         validateOwner(request.ownerId());
         validateModel(request.model());
     }
 
-    private void validateOwner(Long ownerId){
+    private void validateOwner(Long ownerId) {
         Person person = personRepository.findById(ownerId).orElseThrow(
                 () -> new PersonNotFoundException("Пользователя с таким ownerID не существует")
         );
@@ -35,10 +35,10 @@ public class CarsValidator {
             throw new PersonIsNotAdultException("Пользователь должен быть старше 18 лет");
     }
 
-    private void validateModel(String model){
+    private void validateModel(String model) {
         String[] vendorModel = model.split("-", 2);
 
-        if (vendorModel.length < 2){
+        if (vendorModel.length < 2) {
             throw new InvalidFieldException("Должны быть указаны и vendor, и model");
         }
 

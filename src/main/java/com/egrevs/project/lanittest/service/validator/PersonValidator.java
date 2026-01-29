@@ -19,7 +19,7 @@ public class PersonValidator {
             throw new InvalidFieldException("Невалидная дата рождения");
     }
 
-    public void validatePersonWithCars(Person person){
+    public void validatePersonWithCars(Person person) {
         if (person.getCars().isEmpty())
             throw new PersonWithoutCarsException("У пользователя нет машин во владении");
     }

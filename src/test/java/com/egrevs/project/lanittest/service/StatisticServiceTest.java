@@ -27,7 +27,7 @@ class StatisticServiceTest {
 
     @Test
     @DisplayName("Test statistics get functionality")
-    void givenRepositoriesCounts_whenGetStatistics_thenStatisticIsReturned(){
+    void givenRepositoriesCounts_whenGetStatistics_thenStatisticIsReturned() {
         //given
         BDDMockito.given(personService.count()).willReturn(3L);
         BDDMockito.given(carService.count()).willReturn(7L);

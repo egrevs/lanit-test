@@ -33,7 +33,7 @@ class CarsValidatorTest {
 
     @Test
     @DisplayName("Test right validate car method functionality")
-    public void givenCarCreationRequest_whenValidateByOwner_thenPassWithoutExceptions(){
+    public void givenCarCreationRequest_whenValidateByOwner_thenPassWithoutExceptions() {
         //given
         Person person = DataUtils.getAdultAndreyPerson();
         Car carToCheck = DataUtils.getToyotaMarkCar();
@@ -53,7 +53,7 @@ class CarsValidatorTest {
 
     @Test
     @DisplayName("Test invalid ownerId functionality")
-    public void givenCarCreationRequest_whenValidateByOwner_thenThrowsExceptions(){
+    public void givenCarCreationRequest_whenValidateByOwner_thenThrowsExceptions() {
         //given
         Person person = DataUtils.getDmitriyPerson();
         Car carToCheck = DataUtils.getToyotaMarkCar();
@@ -74,7 +74,7 @@ class CarsValidatorTest {
 
     @Test
     @DisplayName("Test model validation functionality")
-    public void givenCarCreationRequest_whenValidateByModelFormat_thenThrowsException(){
+    public void givenCarCreationRequest_whenValidateByModelFormat_thenThrowsException() {
         //given
         Person person = DataUtils.getAdultAndreyPerson();
         Car carToCheck = DataUtils.getToyotaMarkCar();
@@ -94,7 +94,7 @@ class CarsValidatorTest {
 
     @Test
     @DisplayName("Test birthdate validation functionality")
-    public void givenCarCreationRequest_whenValidateByBirthday_thenThrowsException(){
+    public void givenCarCreationRequest_whenValidateByBirthday_thenThrowsException() {
         //given
         Person person = DataUtils.getSergeyPerson();
         Car carToCheck = DataUtils.getToyotaMarkCar();

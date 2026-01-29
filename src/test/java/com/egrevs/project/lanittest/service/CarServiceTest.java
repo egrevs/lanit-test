@@ -44,7 +44,7 @@ class CarServiceTest {
 
     @Test
     @DisplayName("Test car saving functionality")
-    public void givenCarToSave_whenSaveCar_thenRepositoryIsCalled(){
+    public void givenCarToSave_whenSaveCar_thenRepositoryIsCalled() {
         //given
         Car car = DataUtils.getToyotaMarkCar();
         Person person = DataUtils.getAdultAndreyPerson();
@@ -76,7 +76,7 @@ class CarServiceTest {
 
     @Test
     @DisplayName("Test car saving with invalid owner id functionality")
-    public void givenCarToSaveWithInvalidOwner_whenSaveCar_thenExceptionIsThrown(){
+    public void givenCarToSaveWithInvalidOwner_whenSaveCar_thenExceptionIsThrown() {
         //given
         Long notExistsOwnerId = 999L;
         CreateCarRequest carToSave = new CreateCarRequest(
@@ -92,7 +92,7 @@ class CarServiceTest {
 
     @Test
     @DisplayName("Test car with not adult owner functionality")
-    public void givenCarToSaveWithInvalidOwnerAge_whenSaveCar_thenExceptionIsThrown(){
+    public void givenCarToSaveWithInvalidOwnerAge_whenSaveCar_thenExceptionIsThrown() {
         //given
         Person person = DataUtils.getDmitriyPerson();
         CreateCarRequest carToSave = new CreateCarRequest(
@@ -111,7 +111,7 @@ class CarServiceTest {
 
     @Test
     @DisplayName("Test car with incorrect format of model functionality")
-    public void givenCarToSaveWithIncorrectModelFormat_whenSaveCar_thenExceptionIsThrown(){
+    public void givenCarToSaveWithIncorrectModelFormat_whenSaveCar_thenExceptionIsThrown() {
         //given
         Person person = DataUtils.getDmitriyPerson();
         CreateCarRequest carToSave = new CreateCarRequest(

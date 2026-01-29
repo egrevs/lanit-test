@@ -4,25 +4,27 @@ import com.egrevs.project.lanittest.dto.CreatePersonRequest;
 import com.egrevs.project.lanittest.dto.PersonWithCarsResponse;
 import com.egrevs.project.lanittest.service.PersonService;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/people")
-@RequiredArgsConstructor
 public class PersonController {
 
     private final PersonService personService;
 
+    public PersonController(PersonService personService) {
+        this.personService = personService;
+    }
+
     @PostMapping
-    public ResponseEntity<Void> createPerson(@RequestBody @Valid CreatePersonRequest personRequest){
+    public ResponseEntity<Void> createPerson(@RequestBody @Valid CreatePersonRequest personRequest) {
         personService.createPerson(personRequest);
         return ResponseEntity.ok().build();
     }
 
     @GetMapping
-    public ResponseEntity<PersonWithCarsResponse> getPeopleWithCars(@RequestParam(name = "personId") Long personId){
+    public ResponseEntity<PersonWithCarsResponse> getPeopleWithCars(@RequestParam(name = "personId") Long personId) {
         return ResponseEntity.ok(personService.getPeopleWithCars(personId));
     }
 }

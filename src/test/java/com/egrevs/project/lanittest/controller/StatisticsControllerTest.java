@@ -41,7 +41,7 @@ class StatisticsControllerTest {
                 .willReturn(statisticsDto);
         //when
         mockMvc.perform(get("/api/statistics")
-                .contentType(MediaType.APPLICATION_JSON))
+                        .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
         //then
         verify(statisticService, times(1)).getStatistics();

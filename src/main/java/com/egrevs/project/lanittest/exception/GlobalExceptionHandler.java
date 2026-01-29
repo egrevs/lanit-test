@@ -14,38 +14,38 @@ import java.util.Map;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(CarAlreadyExistsException.class)
-    public ResponseEntity<Map<String, Object>> handleReviewByCarExist(CarAlreadyExistsException e){
+    public ResponseEntity<Map<String, Object>> handleReviewByCarExist(CarAlreadyExistsException e) {
         return buildErrorResponse(HttpStatus.BAD_REQUEST, e.getMessage());
     }
 
     @ExceptionHandler(PersonAlreadyExistsException.class)
-    public ResponseEntity<Map<String, Object>> handleReviewByPersonExist(PersonAlreadyExistsException e){
+    public ResponseEntity<Map<String, Object>> handleReviewByPersonExist(PersonAlreadyExistsException e) {
         return buildErrorResponse(HttpStatus.BAD_REQUEST, e.getMessage());
     }
 
     @ExceptionHandler(PersonIsNotAdultException.class)
-    public ResponseEntity<Map<String, Object>> handleReviewByPersonAges(PersonIsNotAdultException e){
+    public ResponseEntity<Map<String, Object>> handleReviewByPersonAges(PersonIsNotAdultException e) {
         return buildErrorResponse(HttpStatus.BAD_REQUEST, e.getMessage());
     }
 
     @ExceptionHandler(PersonNotFoundException.class)
-    public ResponseEntity<Map<String, Object>> handleReviewByPersonFounding(PersonNotFoundException e){
+    public ResponseEntity<Map<String, Object>> handleReviewByPersonFounding(PersonNotFoundException e) {
         return buildErrorResponse(HttpStatus.NOT_FOUND, e.getMessage());
     }
 
     @ExceptionHandler(InvalidFieldException.class)
-    public ResponseEntity<Map<String, Object>> handleReviewByVendorFields(InvalidFieldException e){
+    public ResponseEntity<Map<String, Object>> handleReviewByVendorFields(InvalidFieldException e) {
         return buildErrorResponse(HttpStatus.BAD_REQUEST, e.getMessage());
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
-    public ResponseEntity<Map<String, Object>> handleReviewByJsonFormat(HttpMessageNotReadableException e){
+    public ResponseEntity<Map<String, Object>> handleReviewByJsonFormat(HttpMessageNotReadableException e) {
         return buildErrorResponse(HttpStatus.BAD_REQUEST,
                 "Неверный формат даты. Ожидается формат: dd.MM.yyyy");
     }
 
     @ExceptionHandler(PersonWithoutCarsException.class)
-    public ResponseEntity<Map<String, Object>> handlePersonWithoutCars(PersonWithoutCarsException e){
+    public ResponseEntity<Map<String, Object>> handlePersonWithoutCars(PersonWithoutCarsException e) {
         return buildErrorResponse(HttpStatus.BAD_REQUEST, e.getMessage());
     }
 
