@@ -42,7 +42,6 @@ public class PersonService {
                 () -> new PersonNotFoundException("Пользователь с таким id не существует")
         );
         personValidator.validateBirthdate(toRequestDto(person));
-        personValidator.validatePersonWithCars(person);
 
         return toDto(person);
     }
