@@ -13,6 +13,6 @@ public class SwaggerConfig {
                 .info(new Info()
                         .title("Lanit test")
                         .version("1.0")
-                        .description("Api для Lanit test"));
+                        .description("Документация api проекта Lanit test"));
     }
 }
