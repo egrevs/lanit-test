@@ -9,6 +9,7 @@ import com.egrevs.project.lanittest.exception.PersonAlreadyExistsException;
 import com.egrevs.project.lanittest.exception.PersonNotFoundException;
 import com.egrevs.project.lanittest.repository.PersonRepository;
 import com.egrevs.project.lanittest.service.validator.PersonValidator;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -23,6 +24,7 @@ public class PersonService {
         this.personValidator = personValidator;
     }
 
+    @CacheEvict(value = "statistics", allEntries = true)
     public void createPerson(CreatePersonRequest personRequest) {
         if (personRepository.existsById(personRequest.id()))
             throw new PersonAlreadyExistsException("Человек с таким id уже существует");
@@ -46,12 +48,17 @@ public class PersonService {
         return toDto(person);
     }
 
+    @CacheEvict(value = "statistics")
     public void clearAll() {
         personRepository.deleteAll();
     }
 
     public long count() {
         return personRepository.count();
+    }
+
+    public long countPeopleWithoutCars(){
+        return personRepository.countPeopleWithoutCars();
     }
 
     private PersonWithCarsResponse toDto(Person person) {

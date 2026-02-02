@@ -8,6 +8,7 @@ import com.egrevs.project.lanittest.exception.PersonNotFoundException;
 import com.egrevs.project.lanittest.repository.CarRepository;
 import com.egrevs.project.lanittest.repository.PersonRepository;
 import com.egrevs.project.lanittest.service.validator.CarsValidator;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -23,6 +24,7 @@ public class CarService {
         this.carsValidator = carsValidator;
     }
 
+    @CacheEvict(value = "statistics", allEntries = true)
     public void createCar(CreateCarRequest carRequest) {
         Person person = personRepository.findById(carRequest.ownerId()).orElseThrow(
                 () -> new PersonNotFoundException("Пользователя с таким ownerID не существует")
@@ -52,5 +54,9 @@ public class CarService {
 
     public long countByVendor() {
         return carRepository.countByVendor();
+    }
+
+    public Long countAvgHorsepower(){
+        return carRepository.avgHorsepower();
     }
 }

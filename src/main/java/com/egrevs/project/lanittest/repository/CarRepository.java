@@ -12,4 +12,7 @@ public interface CarRepository extends JpaRepository<Car, Long> {
 
     @Query(value = "select count(distinct (lower(c.vendor))) from Car as c")
     long countByVendor();
+
+    @Query(value = "select avg(c.horsepower) from Car as c")
+    Long avgHorsepower();
 }

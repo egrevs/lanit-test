@@ -3,6 +3,8 @@ package com.egrevs.project.lanittest.dto;
 public record StatisticsDto(
         Long personCount,
         Long carCount,
-        Long uniqueVendorCount
+        Long uniqueVendorCount,
+        Long countPeopleWithoutCars,
+        Long avgHorsepower
 ) {
 }
