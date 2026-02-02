@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
-class StatisticServiceTest {
+class StatisticsServiceTest {
 
     @Mock
     private PersonService personService;
@@ -32,6 +32,8 @@ class StatisticServiceTest {
         BDDMockito.given(personService.count()).willReturn(3L);
         BDDMockito.given(carService.count()).willReturn(7L);
         BDDMockito.given(carService.countByVendor()).willReturn(2L);
+        BDDMockito.given(carService.countAvgHorsepower()).willReturn(230L);
+        BDDMockito.given(personService.countPeopleWithoutCars()).willReturn(1L);
         //when
         StatisticsDto statisticsDto = statisticService.getStatistics();
         //then
@@ -39,9 +41,13 @@ class StatisticServiceTest {
         assertThat(statisticsDto.personCount()).isEqualTo(3L);
         assertThat(statisticsDto.carCount()).isEqualTo(7L);
         assertThat(statisticsDto.uniqueVendorCount()).isEqualTo(2L);
+        assertThat(statisticsDto.avgHorsepower()).isEqualTo(230L);
+        assertThat(statisticsDto.peopleWithoutCars()).isEqualTo(1L);
 
         verify(personService).count();
         verify(carService).count();
         verify(carService).countByVendor();
+        verify(carService).countAvgHorsepower();
+        verify(personService).countPeopleWithoutCars();
     }
 }

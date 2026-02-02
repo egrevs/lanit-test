@@ -150,6 +150,8 @@ public class DataUtils {
         return new StatisticsDto(
                 1L,
                 2L,
+                2L,
+                1L,
                 2L
         );
     }

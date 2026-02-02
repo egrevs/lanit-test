@@ -4,7 +4,7 @@ public record StatisticsDto(
         Long personCount,
         Long carCount,
         Long uniqueVendorCount,
-        Long countPeopleWithoutCars,
+        Long peopleWithoutCars,
         Long avgHorsepower
 ) {
 }

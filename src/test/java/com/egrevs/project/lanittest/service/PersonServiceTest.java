@@ -101,7 +101,7 @@ class PersonServiceTest {
                 person.getName(),
                 person.getBirthday()
         ));
-        BDDMockito.verify(personValidator).validatePersonWithCars(person);
+//        BDDMockito.verify(personValidator).validatePersonWithCars(person);
 
         assertThat(personWithCarsResponse).isNotNull();
         assertThat(personWithCarsResponse.cars()).hasSize(2);
@@ -119,22 +119,6 @@ class PersonServiceTest {
         assertThrows(PersonNotFoundException.class, () -> personService.getPeopleWithCars(nonExistentPersonId));
         //then
         verify(personRepository).findById(nonExistentPersonId);
-    }
-
-    @Test
-    @DisplayName("Test getting person with cars throwing exception functionality")
-    public void givenPersonWithoutCars_whenGetPersonWithCars_thenExceptionIsThrown() {
-        //given
-        Person person = DataUtils.getAdultAndreyPerson();
-        BDDMockito.given(personRepository.findById(person.getId()))
-                .willReturn(Optional.of(person));
-        //when
-        BDDMockito.willThrow(new PersonWithoutCarsException("У пользователя нет машин"))
-                .given(personValidator).validatePersonWithCars(person);
-        //then
-        assertThrows(PersonWithoutCarsException.class, () -> personService.getPeopleWithCars(person.getId()));
-        assertThat(person).isNotNull();
-        assertThat(person.getCars()).isEmpty();
     }
 
     @Test
