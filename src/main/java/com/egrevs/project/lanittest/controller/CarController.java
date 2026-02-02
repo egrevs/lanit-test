@@ -2,6 +2,7 @@ package com.egrevs.project.lanittest.controller;
 
 import com.egrevs.project.lanittest.dto.CreateCarRequest;
 import com.egrevs.project.lanittest.service.CarService;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +21,7 @@ public class CarController {
     }
 
     @PostMapping
+    @Operation(summary = "Создать автомобиль")
     public ResponseEntity<Void> createCar(@RequestBody @Valid CreateCarRequest carRequest) {
         carService.createCar(carRequest);
         return ResponseEntity.ok().build();
