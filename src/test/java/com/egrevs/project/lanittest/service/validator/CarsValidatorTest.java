@@ -96,7 +96,7 @@ class CarsValidatorTest {
     @DisplayName("Test birthdate validation functionality")
     public void givenCarCreationRequest_whenValidateByBirthday_thenThrowsException() {
         //given
-        Person person = DataUtils.getSergeyPerson();
+        Person person = DataUtils.getInvalidDatePerson();
         Car carToCheck = DataUtils.getToyotaMarkCar();
         CreateCarRequest carRequest = new CreateCarRequest(
                 carToCheck.getId(),

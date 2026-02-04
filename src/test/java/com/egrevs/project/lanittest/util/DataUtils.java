@@ -35,6 +35,14 @@ public class DataUtils {
         return person;
     }
 
+    public static Person getInvalidDatePerson(){
+        Person person = new Person();
+        person.setId(5L);
+        person.setName("Бродяга");
+        person.setBirthday(LocalDate.of(2021, 2, 21));
+        return person;
+    }
+
     public static Person getVladimirPerson() {
         Person person = new Person();
         person.setId(3L);
