@@ -13,7 +13,7 @@ import java.time.ZoneId;
 public class PersonValidator {
 
     public void validateBirthdate(CreatePersonRequest personRequest) {
-        LocalDate localDate = personRequest.birthday().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate localDate = personRequest.birthday();
 
         if (localDate.isAfter(LocalDate.now()))
             throw new InvalidFieldException("Невалидная дата рождения");

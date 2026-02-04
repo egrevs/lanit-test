@@ -49,10 +49,7 @@ public class CarsValidator {
 
     private boolean isAdult(Person person) {
         return Period.between(
-                        person.getBirthday()
-                                .toInstant()
-                                .atZone(ZoneId.systemDefault())
-                                .toLocalDate(),
+                        person.getBirthday(),
                         LocalDate.now())
                 .getYears() >= 18;
     }

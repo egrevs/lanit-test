@@ -12,6 +12,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.TimeZone;
 
 @Slf4j
 public class DataUtils {
@@ -22,7 +23,7 @@ public class DataUtils {
         Person person = new Person();
         person.setId(1L);
         person.setName("Дмитрий");
-        person.setBirthday(new Date());
+        person.setBirthday(LocalDate.of(2000, 1, 1));
         return person;
     }
 
@@ -30,7 +31,7 @@ public class DataUtils {
         Person person = new Person();
         person.setId(2L);
         person.setName("Сергей");
-        person.setBirthday(new Date());
+        person.setBirthday(LocalDate.of(2003, 2, 21));
         return person;
     }
 
@@ -38,7 +39,7 @@ public class DataUtils {
         Person person = new Person();
         person.setId(3L);
         person.setName("Владимир");
-        person.setBirthday(new Date());
+        person.setBirthday(LocalDate.of(2011, 12, 1));
         return person;
     }
 
@@ -46,10 +47,7 @@ public class DataUtils {
         Person person = new Person();
         person.setId(1L);
         person.setName("Андрей");
-        person.setBirthday(Date.from(LocalDate.now()
-                .minusYears(18)
-                .atStartOfDay(ZoneId.systemDefault())
-                .toInstant()));
+        person.setBirthday(LocalDate.of(2000, 1, 1));
         return person;
     }
 
@@ -101,31 +99,19 @@ public class DataUtils {
     }
 
     public static CreatePersonRequest getPersonRequest() {
-        String dateStr = "01.01.2000";
-        try {
-            Date date = sdf.parse(dateStr);
             return new CreatePersonRequest(
                     1L,
                     "Александр",
-                    date
+                    LocalDate.of(2000, 1, 1)
             );
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     public static CreatePersonRequest getInvalidPersonRequest() {
-        String dateStr = "01.01.2000";
-        try {
-            Date date = sdf.parse(dateStr);
             return new CreatePersonRequest(
                     null,
                     "Александр",
-                    date
+                    LocalDate.of(2000, 1, 1)
             );
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     public static CreateCarRequest getCarRequest() {
