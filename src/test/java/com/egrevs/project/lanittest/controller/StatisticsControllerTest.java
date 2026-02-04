@@ -1,6 +1,8 @@
 package com.egrevs.project.lanittest.controller;
 
 import com.egrevs.project.lanittest.dto.StatisticsDto;
+import com.egrevs.project.lanittest.repository.CarRepository;
+import com.egrevs.project.lanittest.repository.PersonRepository;
 import com.egrevs.project.lanittest.service.StatisticService;
 import com.egrevs.project.lanittest.util.DataUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -22,9 +24,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 
 @WebMvcTest(StatisticsController.class)
 class StatisticsControllerTest {
-
-    @Autowired
-    private ObjectMapper objectMapper;
 
     @Autowired
     private MockMvc mockMvc;

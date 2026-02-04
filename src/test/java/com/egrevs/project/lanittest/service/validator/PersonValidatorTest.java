@@ -33,10 +33,7 @@ class PersonValidatorTest {
         CreatePersonRequest personRequest = new CreatePersonRequest(
                 person.getId(),
                 person.getName(),
-                Date.from(LocalDate.now()
-                        .plusDays(1)
-                        .atStartOfDay(ZoneId.systemDefault())
-                        .toInstant())
+                person.getBirthday()
         );
         //when
         //then

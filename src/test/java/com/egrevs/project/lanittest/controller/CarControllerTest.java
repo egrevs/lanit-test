@@ -50,14 +50,12 @@ class CarControllerTest {
     public void givenCreatInvalidCarRequest_whenCreateCar_thenBadRequestResponse() throws Exception {
         //given
         CreateCarRequest carToSave = DataUtils.getInvalidCarRequest();
-        BDDMockito.doNothing().when(carService)
-                .createCar(any(CreateCarRequest.class));
         //when
         mockMvc.perform(post("/api/cars")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(carToSave)))
                 .andExpect(MockMvcResultMatchers.status().isBadRequest());
         //then
-        verify(carService, never()).createCar(any(CreateCarRequest.class));
+        verifyNoInteractions(carService);
     }
 }
